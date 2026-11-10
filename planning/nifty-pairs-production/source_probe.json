@@ -1,0 +1,106 @@
+[
+  {
+    "source": "legacy_bhavcopy",
+    "url": "https://nsearchives.nseindia.com/content/historical/EQUITIES/2024/JUL/cm05JUL2024bhav.csv.zip",
+    "checked_at_utc": "2026-11-10T16:01:47.853550+00:00",
+    "http_status": 200,
+    "bytes": 109203,
+    "content_type": "application/zip",
+    "sha256": "e08c8c0650e6807f8b1abd0658bc8d87cbe2d78c2fc77e05c82878f30be46665",
+    "archive_files": [
+      "cm05JUL2024bhav.csv"
+    ],
+    "columns": [
+      "SYMBOL",
+      "SERIES",
+      "OPEN",
+      "HIGH",
+      "LOW",
+      "CLOSE",
+      "LAST",
+      "PREVCLOSE",
+      "TOTTRDQTY",
+      "TOTTRDVAL",
+      "TIMESTAMP",
+      "TOTALTRADES",
+      "ISIN",
+      ""
+    ],
+    "records": 2775
+  },
+  {
+    "source": "udiff_bhavcopy",
+    "url": "https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20240708_F_0000.csv.zip",
+    "checked_at_utc": "2026-11-10T16:01:49.140142+00:00",
+    "http_status": 200,
+    "bytes": 166236,
+    "content_type": "application/zip",
+    "sha256": "0ef55b77c30c8a57d5451cd371424242ad515f708630736ea6dc44c38d6e1e85",
+    "archive_files": [
+      "BhavCopy_NSE_CM_0_0_0_20240708_F_0000.csv"
+    ],
+    "columns": [
+      "TradDt",
+      "BizDt",
+      "Sgmt",
+      "Src",
+      "FinInstrmTp",
+      "FinInstrmId",
+      "ISIN",
+      "TckrSymb",
+      "SctySrs",
+      "XpryDt",
+      "FininstrmActlXpryDt",
+      "StrkPric",
+      "OptnTp",
+      "FinInstrmNm",
+      "OpnPric",
+      "HghPric",
+      "LwPric",
+      "ClsPric",
+      "LastPric",
+      "PrvsClsgPric",
+      "UndrlygPric",
+      "SttlmPric",
+      "OpnIntrst",
+      "ChngInOpnIntrst",
+      "TtlTradgVol",
+      "TtlTrfVal",
+      "TtlNbOfTxsExctd",
+      "SsnId",
+      "NewBrdLotQty",
+      "Rmks",
+      "Rsvd1",
+      "Rsvd2",
+      "Rsvd3",
+      "Rsvd4"
+    ],
+    "records": 2815
+  },
+  {
+    "source": "current_constituents",
+    "url": "https://nsearchives.nseindia.com/content/indices/ind_nifty50list.csv",
+    "checked_at_utc": "2026-11-10T16:01:49.815848+00:00",
+    "http_status": 200,
+    "bytes": 3344,
+    "content_type": "text/csv",
+    "sha256": "f5ba4027d935ae72879d5c24bbebf0e8439ec8ed504ffdf4175fde69206244b3",
+    "columns": [
+      "Company Name",
+      "Industry",
+      "Symbol",
+      "Series",
+      "ISIN Code"
+    ],
+    "records": 50
+  },
+  {
+    "source": "membership_changes_candidate",
+    "url": "https://archives.nseindia.com/content/indices/IndexInclExcl.xls",
+    "checked_at_utc": "2026-11-10T16:01:50.415712+00:00",
+    "http_status": 200,
+    "bytes": 820736,
+    "content_type": "application/vnd.ms-excel",
+    "sha256": "8869bb7c4df67403131a494a8cc65509e80828f9438bc150b506cdbf55378046"
+  }
+]

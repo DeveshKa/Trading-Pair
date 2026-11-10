@@ -1,0 +1,22 @@
+id,priority,workstream,deliverable,depends_on,acceptance
+D01,P0,Data,Source rights and coverage registry,,Every field has provenance access method intended use and evidence level
+D02,P0,Data,Legacy and UDiFF ingestion,D01,Sample schemas and full historical date coverage audited without silent gaps
+D03,P0,Data,Security identity and historical membership,D01,Every formation date maps members by effective date with evidence
+D04,P0,Data,Corporate actions and adjustments,D02,Split dividend merger and demerger fixtures reconcile raw prices and holdings
+D05,P0,Data,TRI benchmark and calendars,D01,Portfolio dates align and missing benchmark values block comparison
+D06,P0,Data,Frozen research snapshot,D02+D03+D04+D05,Manifest pins raw hashes parser adjustment version and quality gates
+R01,P0,Accounting,Signed event ledger,D06,Long short dividend margin and roll fixtures reconcile to NAV
+R02,P0,Research,Distance baseline and six cohorts,R01,Reproducible next-session execution with explicit idealized versus executable label
+R03,P0,Research,Evaluation and trial registry,D06,Protocol frozen before final outcomes and all variants recorded
+X01,P0,Execution,Historical futures metadata and expiry rules,D02,Actual contracts lots settlement eligibility and dated rules audited
+X02,P0,Execution,Cost and capital-feasibility model,X01+R01,All fill fees and integer lots included with capital rejection reasons
+R04,P1,Research,Cointegration selection,R03,Deterministic orientation corrected p-values and frozen residual models
+R05,P1,Research,Walk-forward and holdout report,R02+R04+X02,Nifty TRI matched-capital comparison and cost stress with uncertainty
+S01,P1,Signals,Shared replay and live decision function,R04,Identical events produce identical decisions and no future data affects prior outputs
+S02,P1,Signals,Execution-ready opportunity states,S01+X02,Stale blocked expired and confirmed states persist with reasons
+N01,P1,Notifications,Inbox outbox and adapters,S02,Retries restarts duplicates and TTL verified with no live recipients by default
+U01,P1,Interface,Operator dashboard,R05+S02,Data time model version costs blocked reasons and NAV are reviewable
+O01,P1,Operations,Auth metrics backups and runbooks,S02,Access tests restore drill and failure incidents completed
+P01,P1,Paper,Forward paper run,N01+U01+O01,At least 60 sessions reconciliation captured and low-trade evidence labeled insufficient
+M01,P2,Models,OU copula and LSTM ablations,R05,Incremental unseen net value versus simple alternatives or candidate rejected
+L01,P3,Orders,Optional supervised live adapter,P01+X02,Explicit enablement broker requirements and unmatched-leg recovery passed

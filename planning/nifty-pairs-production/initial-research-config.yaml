@@ -1,0 +1,81 @@
+# Proposed research configuration. This file does not enable a strategy or orders.
+spec_version: '1.0'
+status: proposed_not_validated
+timezone: Asia/Kolkata
+currency: INR
+execution_mode: research
+live_orders_enabled: false
+notifications_enabled: false
+universe:
+  index: NIFTY_50
+  membership: point_in_time_required
+  current_members_retroactive: false
+  sector_filter: same_sector_initial
+data:
+  primary: nse_official_archives
+  adjustments: versioned_total_return_research_raw_execution
+  snapshot_id: null  # Must resolve to a validated immutable snapshot before running.
+  ffill_execution_prices: false
+  publish_raw_data_to_git: false
+evaluation:
+  development: ['2005-01-01', '2015-12-31']
+  validation: ['2016-01-01', '2020-12-31']
+  sealed_holdout: ['2021-01-01', '2025-12-31']
+  forward_replay: ['2026-01-01', null]
+  preserve_all_trials: true
+  purge_overlapping_training_labels: true
+  embargo_sessions: 60
+  benchmark_primary: NIFTY_50_TRI
+  benchmark_secondary: NIFTY_50_PRICE
+cointegration_candidate:
+  formation_sessions: 252
+  reselect: monthly
+  orientation: deterministic_security_id
+  regression: log_price_with_intercept
+  correction: holm_familywise
+  family_alpha: 0.05
+  positive_beta_required: true
+  residual_half_life_sessions: [5, 60]
+  coefficients_during_trade: frozen
+  entry_abs_z_crossing: 2.0
+  exit_abs_z: 0.5
+  adverse_stop_abs_z: 4.0
+  reject_new_entries_at_or_beyond_stop: true
+  max_holding_sessions: 60
+  fill: next_valid_session_raw_open_with_slippage
+execution:
+  research_idealized_short_access: explicitly_labeled_only
+  preferred_executable_route: single_stock_futures
+  verified_historical_contracts_required: true
+  fractional_contracts: false
+  roll_sessions_before_expiry: 5
+  broker_cutoff_can_force_earlier_roll: true
+  assumed_intrabar_stop_at_exact_price: false
+  max_quote_age_seconds: 10
+  max_unhedged_time_seconds: null # Must be set from tested broker behavior before an order pilot.
+risk:
+  capital_inr: null  # Requires user/account decision; no assumed feasible account size.
+  gross_equity_ratio_max: 1.0
+  abs_net_equity_ratio_max: 0.10
+  pair_gross_equity_ratio_max: 0.15
+  underlying_gross_equity_ratio_max: 0.15
+  sector_gross_equity_ratio_max: 0.35
+  stop_risk_equity_ratio_max: 0.0025
+  daily_loss_pause_equity_ratio: 0.01
+  drawdown_pause_equity_ratio: 0.08
+  minimum_post_margin_cash_equity_ratio: 0.30
+  pair_stop_loss_inr: null # Derive from approved account equity and stop-risk budget.
+costs:
+  dated_fee_schedule_id: null
+  missing_quote_slippage_bps_per_leg_scenarios: [5, 10, 20]
+  stress_variable_cost_multiplier: 2
+  borrow_cost_if_unknown: scenario_only_not_verified_execution
+promotion_targets:
+  holdout_net_cagr_positive: true
+  holdout_net_sharpe_min: 0.8
+  holdout_max_drawdown_max: 0.10
+  stress_net_return_positive: true
+  minimum_completed_trades: 100
+  minimum_years: 3
+  max_positive_profit_contribution_single_year_or_security: 0.50
+# Unset required fields must fail validation, not acquire silent defaults.
