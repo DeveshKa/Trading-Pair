@@ -82,6 +82,8 @@ def relationship_test(levels):
                           half_life=half, level_adf_pvalues=adf,
                           integration_compatible=all(v is not None and v > .05 for v in adf),
                           test_status="OK" if np.std(residual) > 1e-10 else "DEGENERATE")
+            if result["test_status"] != "OK":
+                result["pvalue"] = 1.
         except (ValueError, np.linalg.LinAlgError):
             result["test_status"] = "FAILED"
     return result

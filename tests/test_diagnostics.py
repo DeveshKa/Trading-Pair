@@ -85,7 +85,9 @@ def test_visual_price_similarity_is_not_return_correlation():
 
 def test_duplicate_and_stationary_series_not_tradable():
     x = np.exp(np.linspace(1, 2, 500))
-    assert relationship_test(pd.DataFrame({"A": x, "B": 2*x}))["test_status"] == "DEGENERATE"
+    duplicate = relationship_test(pd.DataFrame({"A": x, "B": 2*x}))
+    assert duplicate["test_status"] == "DEGENERATE"
+    assert duplicate["pvalue"] == 1.0
     rng = np.random.default_rng(2)
     levels = pd.DataFrame(np.exp(rng.normal(5, .1, (500,2))), columns=["A","B"])
     assert not relationship_test(levels)["integration_compatible"]
