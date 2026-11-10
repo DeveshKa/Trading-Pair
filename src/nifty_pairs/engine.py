@@ -41,6 +41,8 @@ def metrics(nav, benchmark, risk_free=0.):
 
 
 def backtest(dataset: Dataset, config: Config):
+    if dataset.manifest.get("usage") == "relationship_diagnostics_only":
+        raise ValueError("Diagnostics-only snapshot cannot be backtested; audit/complete its benchmark first")
     if config.require_membership and dataset.membership is None:
         raise ValueError("Point-in-time membership required. Exploratory fixed-symbol runs must explicitly disable it.")
     c = config

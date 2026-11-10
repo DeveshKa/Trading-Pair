@@ -62,7 +62,7 @@ class Dataset:
         bench["close"] = pd.to_numeric(bench.close, errors="raise")
         if not np.isfinite(bench.close).all() or (bench.close <= 0).any():
             raise ValueError("Invalid benchmark levels")
-        if not set(bars.date) <= set(bench.date):
+        if not set(bars.date) <= set(bench.date) and manifest.get("usage") != "relationship_diagnostics_only":
             raise ValueError("Benchmark missing equity sessions; no silent forward fill")
         member_path = folder / "membership.csv"
         membership = pd.read_csv(member_path) if member_path.exists() else None
@@ -152,7 +152,8 @@ def make_demo(folder, sessions=1100, seed=42):
 class YFinanceProvider:
     """Exploratory adapter. No point-in-time universe or exchange-data certification."""
 
-    def download(self, symbols, start, end, destination, benchmark="^NSEI", allow_calendar_intersection=False):
+    def download(self, symbols, start, end, destination, benchmark="^NSEI", allow_calendar_intersection=False,
+                 diagnostics_only=False):
         import yfinance as yf
         from datetime import datetime, timezone
         frames = []
@@ -184,10 +185,12 @@ class YFinanceProvider:
         bench = pd.DataFrame({"date": dates, "close": b.Close.to_numpy()})
         combined = pd.concat(frames)
         missing = sorted(set(combined.date) - set(bench.date))
-        if missing and not allow_calendar_intersection:
+        if diagnostics_only and allow_calendar_intersection:
+            raise ValueError("Diagnostic preservation and calendar exclusion are mutually exclusive")
+        if missing and not allow_calendar_intersection and not diagnostics_only:
             raise ValueError(f"Benchmark missing {len(missing)} sessions: {[str(d.date()) for d in missing]}. "
                              "Repair benchmark or explicitly use --allow-calendar-intersection for a smoke test.")
-        if missing:
+        if missing and not diagnostics_only:
             removed = combined.loc[combined.date.isin(missing)]
             if (removed.dividend != 0).any() or (removed.split != 1).any():
                 raise ValueError("Cannot drop benchmark-missing sessions containing corporate actions")
@@ -199,7 +202,9 @@ class YFinanceProvider:
                        "price_basis": "raw_execution", "actions_complete": False,
                        "split_reconstruction": "Yahoo OHLC times subsequent reported split ratios",
                        "membership_audited": False, "benchmark_symbol": benchmark,
-                       "calendar_policy": "explicit_intersection" if allow_calendar_intersection else "strict",
-                       "excluded_equity_sessions": [str(d.date()) for d in missing],
+                       "usage": "relationship_diagnostics_only" if diagnostics_only else "exploratory_backtest",
+                       "calendar_policy": "preserve_all_stock_sessions" if diagnostics_only else "explicit_intersection" if allow_calendar_intersection else "strict",
+                       "benchmark_missing_sessions": [str(d.date()) for d in missing],
+                       "excluded_equity_sessions": [] if diagnostics_only else [str(d.date()) for d in missing],
                        "benchmark_kind": "PRICE_INDEX" if benchmark == "^NSEI" else "USER_LIBRARY_SERIES",
                        "warning": "Exploratory fixed-symbol sample; actions and reconstructions need NSE audit"})

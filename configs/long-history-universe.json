@@ -1,0 +1,20 @@
+{
+  "label": "Curated long-history research pilot; not historical Nifty membership",
+  "classification_audited": false,
+  "requested_start": "2005-01-01",
+  "requested_end_exclusive": "2026-01-01",
+  "sectors": {
+    "HDFCBANK.NS": "BANK",
+    "ICICIBANK.NS": "BANK",
+    "SBIN.NS": "BANK",
+    "AXISBANK.NS": "BANK",
+    "KOTAKBANK.NS": "BANK",
+    "TCS.NS": "IT",
+    "INFY.NS": "IT",
+    "WIPRO.NS": "IT",
+    "HCLTECH.NS": "IT",
+    "SUNPHARMA.NS": "PHARMA",
+    "DRREDDY.NS": "PHARMA",
+    "CIPLA.NS": "PHARMA"
+  }
+}

@@ -47,6 +47,24 @@ The default library benchmark `^NSEI` is the **Nifty price index, not TRI**. Imp
 
 The library adapter reconstructs raw share-unit execution prices from Yahoo split-adjusted OHLC using reported subsequent split events; adjusted close is research-only. This provider convention, dividends, extraordinary distributions, mergers and demergers need exchange cross-checks. The manifest therefore marks actions incomplete. Never regard a successful import as a full corporate-action audit.
 
+## Longer-history pair identification
+
+Read the [detailed development plan](docs/long-history-pair-identification-plan.md). The new diagnostic layer examines **1/3/5/10/20-year horizons**, daily/weekly return correlation, rank correlation, block-bootstrap uncertainty, rolling correlation, market-residual correlation, and rolling cointegration with one conservative joint multiple-testing correction. It does not replace the trading selector or convert high correlation into a trade recommendation.
+
+```bash
+nifty-pairs download \
+  --symbols HDFCBANK.NS ICICIBANK.NS SBIN.NS AXISBANK.NS KOTAKBANK.NS \
+            TCS.NS INFY.NS WIPRO.NS HCLTECH.NS SUNPHARMA.NS DRREDDY.NS CIPLA.NS \
+  --start 2005-01-01 --end 2026-01-01 --out data/long-history --diagnostics-only
+
+nifty-pairs diagnose --data data/long-history \
+  --universe configs/long-history-universe.json --exploratory --out runs/long-history
+
+nifty-pairs serve --run runs/long-history
+```
+
+The curated twelve-stock pilot is not a historical Nifty universe. Diagnostic-only snapshots preserve all stock/corporate-action sessions despite benchmark gaps, and the backtester explicitly rejects them until the benchmark is completed. Reports preserve incomplete horizons and missing-session failures. [Initial long-history observations](docs/long-history-verification.md) record the actual pilot, including negative findings and source-calendar issues.
+
 ## Implemented
 
 - Validated and hash-addressed CSV snapshots, atomic writes and source manifests.

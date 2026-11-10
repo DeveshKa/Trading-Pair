@@ -54,3 +54,14 @@ def test_calendar_cannot_drop_corporate_actions(tmp_path, monkeypatch):
     install_fake(monkeypatch, missing_benchmark=True, event_on_missing=True)
     with pytest.raises(ValueError, match="corporate actions"):
         YFinanceProvider().download(["A.NS"], "2020-01-01", "2020-01-05", tmp_path / "library", allow_calendar_intersection=True)
+
+
+def test_diagnostics_preserve_corporate_action_sessions(tmp_path, monkeypatch):
+    install_fake(monkeypatch, missing_benchmark=True, event_on_missing=True)
+    path = tmp_path / "diagnostic"
+    YFinanceProvider().download(["A.NS"], "2020-01-01", "2020-01-05", path, diagnostics_only=True)
+    d = Dataset.load(path)
+    assert len(d.bars) == 4
+    assert d.bars.dividend.sum() == 2.0
+    assert d.manifest["excluded_equity_sessions"] == []
+    assert d.manifest["benchmark_missing_sessions"] == ["2020-01-02"]

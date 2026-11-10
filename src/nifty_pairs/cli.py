@@ -11,6 +11,7 @@ from .data import Dataset, YFinanceProvider, make_demo
 from .engine import backtest
 from .report import save_run
 from .scan import scan, save_scan
+from .diagnostics import diagnose, save_diagnostics
 
 
 def main(argv=None):
@@ -28,6 +29,8 @@ def main(argv=None):
     download.add_argument("--out", required=True)
     download.add_argument("--allow-calendar-intersection", action="store_true",
                           help="Exploratory only: explicitly drop stock sessions absent from benchmark; log dates")
+    download.add_argument("--diagnostics-only", action="store_true",
+                          help="Keep every stock session; incomplete benchmark is permitted for diagnostics, never backtesting")
     validate = sub.add_parser("validate", help="Validate CSV contract and print provenance")
     validate.add_argument("--data", required=True)
     run = sub.add_parser("backtest")
@@ -44,6 +47,13 @@ def main(argv=None):
     watch.add_argument("--as-of")
     watch.add_argument("--out", required=True)
     watch.add_argument("--exploratory", action="store_true")
+    profile = sub.add_parser("diagnose", help="Long-history correlation and stable-spread evidence")
+    profile.add_argument("--data", required=True)
+    profile.add_argument("--out", required=True)
+    profile.add_argument("--as-of")
+    profile.add_argument("--universe", help="JSON with curated sector mapping")
+    profile.add_argument("--cross-sector", action="store_true")
+    profile.add_argument("--exploratory", action="store_true")
     serve = sub.add_parser("serve", help="Serve one generated report locally (read-only)")
     serve.add_argument("--run", required=True)
     serve.add_argument("--port", type=int, default=8765)
@@ -58,7 +68,7 @@ def main(argv=None):
             if args.start >= args.end or len(set(args.symbols)) != len(args.symbols):
                 raise ValueError("Require start < end and unique symbols")
             YFinanceProvider().download(args.symbols, args.start, args.end, Path(args.out), args.benchmark,
-                                       args.allow_calendar_intersection)
+                                       args.allow_calendar_intersection, args.diagnostics_only)
             print(f"Library data written to {args.out}; fixed-symbol exploratory sample, not audited Nifty membership")
         elif args.command == "validate":
             d = Dataset.load(args.data)
@@ -92,6 +102,22 @@ def main(argv=None):
             result = scan(d, c, args.as_of)
             save_scan(result, args.out)
             print(json.dumps({k: v for k, v in result.items() if k != "selection_audit"}, indent=2))
+        elif args.command == "diagnose":
+            d = Dataset.load(args.data)
+            if not args.exploratory and not d.manifest.get("synthetic") and not d.manifest.get("membership_audited"):
+                raise ValueError("Unaudited universe: explicitly use --exploratory")
+            mapping = json.loads(Path(args.universe).read_text()).get("sectors") if args.universe else None
+            result = diagnose(d, as_of=args.as_of, sectors=mapping, same_sector=not args.cross_sector)
+            if args.universe:
+                result["universe_declaration"] = json.loads(Path(args.universe).read_text())
+            save_diagnostics(result, args.out)
+            from collections import Counter
+            print(json.dumps({"as_of": result["as_of"], "source": result["source"],
+                              "pair_count": result["pair_count"],
+                              "hypotheses": result["hypotheses_in_joint_holm_family"],
+                              "benchmark_missing_sessions": len(result["benchmark_missing_sessions"]),
+                              "classifications": dict(Counter(r["classification"] for r in result["pairs"])),
+                              "report": str(Path(args.out) / "report.html")}, indent=2))
         elif args.command == "serve":
             path = Path(args.run).resolve()
             if not (path / "report.html").is_file():
