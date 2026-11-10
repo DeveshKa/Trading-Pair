@@ -1,0 +1,36 @@
+{
+  "strategy": {
+    "total_return": 0.031662479407152055,
+    "cagr": 0.009306282874581795,
+    "annual_volatility": 0.005962324018560766,
+    "sharpe": 1.5566357525108059,
+    "max_drawdown": -0.004456195620125891
+  },
+  "benchmark": {
+    "total_return": 0.06906364108756957,
+    "cagr": 0.02004418003191244,
+    "annual_volatility": 0.14219147909590302,
+    "sharpe": 0.2106367162489179,
+    "max_drawdown": -0.25016062210456014
+  },
+  "return_correlation": 0.011189712397987595,
+  "completed_trades": 15,
+  "wins": 13,
+  "fees": 2266.296788330219,
+  "borrow_cost": 2754.7599909315886,
+  "open_pairs_at_end": 0,
+  "net_profit": 31662.47940715216,
+  "trade_pnl": 31662.479407152165,
+  "benchmark_kind": "SYNTHETIC_PRICE",
+  "data_source": "synthetic_demo",
+  "synthetic": true,
+  "membership_audited": false,
+  "execution": "IDEALIZED_CASH_WITH_MODELED_SHORT_BORROW_NOT_FUTURES",
+  "limitations": [
+    "No historical borrow confirmation, statutory fee schedule or broker execution",
+    "Daily next-open fills; no intraday stop guarantee; zero idle cash yield",
+    "Monthly reformation; no six overlapping GGR cohorts in v0.1",
+    "Price benchmark is not TRI unless provided explicitly",
+    "No production promotion based on smoke tests"
+  ]
+}

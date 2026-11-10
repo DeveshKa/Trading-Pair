@@ -1,0 +1,16 @@
+{
+  "source": "synthetic_demo",
+  "synthetic": true,
+  "seed": 42,
+  "price_basis": "raw_execution",
+  "actions_complete": true,
+  "benchmark_kind": "SYNTHETIC_PRICE",
+  "membership_audited": false,
+  "file_hashes": {
+    "bars.csv": "e7ad4664949aa7dca87647a9a0af21cab1b5cf6e8a8cc328291941c0c4eb8471",
+    "benchmark.csv": "546af4c966722639d318341bf7d37f089ffd05d4567b1d4da6bd210f84f5bbf1",
+    "membership.csv": "b999ea816c55d34635dbb6ab33ec64a45c09a17e18b8a09d8a50c21b2020447e",
+    "manifest.json": "05e695b85d6ae7e79b6a299cdb6d3a050bcec381ca26fe57f0956eb17dab6f4e"
+  },
+  "code_sha256": "2d52b6e69ead1e7f1d5ff60522b75f927ff4575cfcc03c6aafd25491da1e9177"
+}

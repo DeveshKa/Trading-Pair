@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nifty-pairs"
+version = "0.1.0"
+description = "Causal daily pairs research, portfolio simulation and durable local alerts"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3", "pandas>=2.2,<3", "scipy>=1.12,<2", "statsmodels>=0.14,<0.15"]
+
+[project.optional-dependencies]
+library = ["yfinance>=0.2.65,<2"]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+nifty-pairs = "nifty_pairs.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,422 @@
+[
+  {
+    "event_id": "caf92402067f8441d430b849ac325f0c82c4cc36a0979d02e3a288d7d6829262",
+    "created_at": "2018-12-24",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2018-12-24\", \"direction\": \"SHORT_A_LONG_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"6afe5c126f707f2042ce\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": 2.0928273202109025}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "b8c3071599e0e3f208e789a69c1daebbd75730228f2fd97f9bbb98708e49109e",
+    "created_at": "2018-12-25",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2018-12-25\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"6afe5c126f707f2042ce\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "84cc38f0eadbacc37b8700331c07a3807770754e39a2379bfe992ee8ba669f07",
+    "created_at": "2019-01-03",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2019-01-03\", \"direction\": \"LONG_A_SHORT_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"a300b8cd99df9dc82fad\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": -2.8824528576768222}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "0051f437ae9d813deb8fd404f4bb92054f52ad37405350b7e845235737fb447a",
+    "created_at": "2019-01-04",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2019-01-04\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"a300b8cd99df9dc82fad\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "701f0c52e6c6458ea7794ace92c0d447cf1bba32075433c8ce4a043dda531d0f",
+    "created_at": "2019-01-16",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2019-01-16\", \"kind\": \"EXIT_DUE\", \"model_id\": \"a300b8cd99df9dc82fad\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"CONVERGENCE\", \"z\": -0.08880034694968106}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "8ac12879f2716a85ec1ae86d95a0e0dd48867d6d99fd5cf9f26586b37e987cc1",
+    "created_at": "2019-01-17",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2019-01-17\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO10|DEMO11\", \"pnl\": 3521.3138394249645, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "c5bba30973b86a359f4c37b9da5bb46e34156a939d1ec38063ab42c665d8b633",
+    "created_at": "2019-01-17",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2019-01-17\", \"kind\": \"EXIT_DUE\", \"model_id\": \"6afe5c126f707f2042ce\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"CONVERGENCE\", \"z\": -0.17276675710730457}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "14b64ebaade006889f8494863c2bd57d3744f0bf6888b43709ce4e463df8fc70",
+    "created_at": "2019-01-18",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2019-01-18\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO20|DEMO21\", \"pnl\": 3110.0974070368793, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "1cbd960d9ef61ca01fed8843d33876147bb2d2870a14c3a72582a1600eb188a0",
+    "created_at": "2019-01-25",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2019-01-25\", \"direction\": \"SHORT_A_LONG_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"a300b8cd99df9dc82fad\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": 2.616079827835269}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "3a2166c5c00a573cc46d7709be397193e1574de7c22cd2f4082e66ea251bfb99",
+    "created_at": "2019-01-28",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2019-01-28\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"a300b8cd99df9dc82fad\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "35efa95dc46ffc3969ca83d1e43f649f401ae5af48fe87cf25ad89670c95f85b",
+    "created_at": "2019-02-20",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2019-02-20\", \"kind\": \"EXIT_DUE\", \"model_id\": \"a300b8cd99df9dc82fad\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"CONVERGENCE\", \"z\": 0.2053831748523949}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "ae73ffda2ccbff86aa9be19ee7d5ae27892363275f4732f0f74f5ba57b60f184",
+    "created_at": "2019-02-21",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2019-02-21\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO10|DEMO11\", \"pnl\": 2950.2697953411584, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "4c8d49facb08a74a39f816d7343b2dd07a780b0298f7751d77f30f2e426f27e0",
+    "created_at": "2019-03-25",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2019-03-25\", \"direction\": \"LONG_A_SHORT_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"753b9b6c4849ba1f995b\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": -2.387649713543078}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "6c4e3eda0e7bfd20dd7873f8b23a74be405b89bdec647f93f15dd6a745fefcfb",
+    "created_at": "2019-03-26",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2019-03-26\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"753b9b6c4849ba1f995b\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "8ab3ed1f30a7b521ba4bf29ba75f27f3ac65e11749dc7dca69ccbb51f317bc77",
+    "created_at": "2019-04-10",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2019-04-10\", \"kind\": \"EXIT_DUE\", \"model_id\": \"753b9b6c4849ba1f995b\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"CONVERGENCE\", \"z\": -0.08571003626877341}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "77e09cd77a8d5d88849f12857436de2d8be79092fae3795f3844d5845bf47ced",
+    "created_at": "2019-04-11",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2019-04-11\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO20|DEMO21\", \"pnl\": 3202.6872261965095, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "9f9e75ac82b7cab12dd311f911bf2319a0d64f048db2c9876db6b8a0425df8c9",
+    "created_at": "2019-06-06",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2019-06-06\", \"direction\": \"SHORT_A_LONG_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"cdfda0bc4555b73b010e\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": 2.1559961695512824}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "fc9372d4a3beebb6496b25b7424f13b949cdba9173de8337b9fc1e4c5faf6721",
+    "created_at": "2019-06-07",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2019-06-07\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"cdfda0bc4555b73b010e\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "15e0ff10b82b7390b69f1664e7358c31b13887d4ae55f6210cfc27d00b7a91b6",
+    "created_at": "2019-06-19",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2019-06-19\", \"kind\": \"EXIT_DUE\", \"model_id\": \"cdfda0bc4555b73b010e\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"PAIR_LOSS_STOP\", \"z\": 3.7840186870976646}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "47e333bd407bc6340e32284aafa114031956e98903dcb14ba2c6f8430a7cdcbe",
+    "created_at": "2019-06-19",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2019-06-19\", \"direction\": \"SHORT_A_LONG_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"a4a92e244185f78cfb4b\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": 2.0586125725640336}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "74f88ad80ebccb6be3fbab5b80ebd507bbeaff4c30954ff20c447e9d35f9c080",
+    "created_at": "2019-06-20",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2019-06-20\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"a4a92e244185f78cfb4b\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "dcecdcc6b8ce52172f0b56e55789e4e0f5004231b1474f245bea17b8bc6cd9a3",
+    "created_at": "2019-06-20",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2019-06-20\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO10|DEMO11\", \"pnl\": -2792.1916567437506, \"reason\": \"PAIR_LOSS_STOP\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "2799f00f34569c9beafd894d7fdbf0f6c493e35645b680aa545c79b1d165828f",
+    "created_at": "2019-06-28",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2019-06-28\", \"kind\": \"EXIT_DUE\", \"model_id\": \"a4a92e244185f78cfb4b\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"CONVERGENCE\", \"z\": -0.2137102682989144}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "fffe7917c67cf8b2739c6e3c4dd0d33574885a4a95b7f0dc9d8972a98c57d91e",
+    "created_at": "2019-07-01",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2019-07-01\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO20|DEMO21\", \"pnl\": 3616.138629227111, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "834fe778b7854f09d2a8ceb2a5abece2afacb0352c85698b447f9cf7f0a0a5d4",
+    "created_at": "2019-11-20",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2019-11-20\", \"direction\": \"LONG_A_SHORT_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"173c8dfe82b781d5afb5\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": -2.2718693802193277}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "ca156d7bead660d58c62e6aa14c921118b32b78e34f60d1a387371697a189c3e",
+    "created_at": "2019-11-21",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2019-11-21\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"173c8dfe82b781d5afb5\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "899d0550959a4b60d9a1507c3ce811d8c6f7b0ef5f45a2d8a9bbaf24dabccb50",
+    "created_at": "2019-11-26",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2019-11-26\", \"kind\": \"EXIT_DUE\", \"model_id\": \"173c8dfe82b781d5afb5\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"CONVERGENCE\", \"z\": -0.42109382376869176}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "5abf5051cf7df99a90a5416d116de4b3aff9d87c0c40ccf8012bc2677acaba51",
+    "created_at": "2019-11-27",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2019-11-27\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO00|DEMO01\", \"pnl\": 3242.5058449002336, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "5e87458a5c35d6b0f245be26ca071bca41740c2855cc8c44183e5e6b9faeefe7",
+    "created_at": "2020-01-10",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2020-01-10\", \"direction\": \"SHORT_A_LONG_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"ba08bbebe79d35e65d4c\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": 2.5031619174868394}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "12a011b1a6f939216862cf637cb1604f17a803e61cf9e65814311cbedd8ebaf4",
+    "created_at": "2020-01-13",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2020-01-13\", \"direction\": \"LONG_A_SHORT_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"723121038d44f87bb543\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": -2.051735687688677}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "ec5d45ed17f9da759d8e71c50dccf7ac1a96bae209819de7c015bf656f390eaf",
+    "created_at": "2020-01-13",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2020-01-13\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"ba08bbebe79d35e65d4c\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "353696bead5ff88a059f5ae69161711da6cc2dce8c151270fcd7af59e9feff43",
+    "created_at": "2020-01-14",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2020-01-14\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"723121038d44f87bb543\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "7d6e9a6b16ad24c676bb0d6023fa77b8312693a7781039de241d53e99fdb361b",
+    "created_at": "2020-02-04",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2020-02-04\", \"kind\": \"EXIT_DUE\", \"model_id\": \"723121038d44f87bb543\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"CONVERGENCE\", \"z\": -0.4865044967284206}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "5d6d8eadd15d3ef77437e5a6518a0d679c1ac5901b83941c2c5d5b4bd3dfd648",
+    "created_at": "2020-02-05",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2020-02-05\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO00|DEMO01\", \"pnl\": 1871.7779416225205, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "023fab3a0ca77a570e324f45a8fd92bbd969530e858a304bbba6d263e655076e",
+    "created_at": "2020-02-06",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2020-02-06\", \"kind\": \"EXIT_DUE\", \"model_id\": \"ba08bbebe79d35e65d4c\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"CONVERGENCE\", \"z\": 0.40311695244059204}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "1108ac79dff07c7d481e9282f9f78173058602ed79b373db43965b3302556380",
+    "created_at": "2020-02-07",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2020-02-07\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO20|DEMO21\", \"pnl\": 2910.37777780073, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "d6c69f9adcb85dde58fa494a79cc463fc72aded287c1bc08c7a9dd5fe4a7d955",
+    "created_at": "2020-03-09",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2020-03-09\", \"direction\": \"SHORT_A_LONG_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"07ee6214a88e72110007\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": 2.1585334225409865}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "2c6cd64a8a36c7b757136077c3cd840c19ae1354b1c1833131674e495993dea1",
+    "created_at": "2020-03-10",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2020-03-10\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"07ee6214a88e72110007\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "f5b09fe991c428da42c251047dcf81a300075724bb5b25e46789a8517f1d70eb",
+    "created_at": "2020-03-23",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2020-03-23\", \"kind\": \"EXIT_DUE\", \"model_id\": \"07ee6214a88e72110007\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"PAIR_LOSS_STOP\", \"z\": 3.3653420826910554}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "d500cd485047c884bf2fb809d14614e7ac41be1b8b573f2e94928c8d52d31fd6",
+    "created_at": "2020-03-24",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2020-03-24\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO20|DEMO21\", \"pnl\": -2862.2404391471446, \"reason\": \"PAIR_LOSS_STOP\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "86d70356198f53c1efd2995e410b9294f7b5dc245281dda111589d026cad8a59",
+    "created_at": "2020-03-27",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2020-03-27\", \"direction\": \"SHORT_A_LONG_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"07ee6214a88e72110007\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": 2.402976763929621}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "ff1a2d3cf185d575cad4d99383463c58b8688ee914e52f5eb41a00c50780c27f",
+    "created_at": "2020-03-30",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2020-03-30\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"07ee6214a88e72110007\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "6c12813b633835ca2bf9fd4fdd2169ddc404e17fa30b957b1647352ea170b475",
+    "created_at": "2020-04-13",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2020-04-13\", \"kind\": \"EXIT_DUE\", \"model_id\": \"07ee6214a88e72110007\", \"pair_id\": \"DEMO20|DEMO21\", \"reason\": \"CONVERGENCE\", \"z\": 0.19067563080796435}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "f1edf3e9583c865ec8c2fdd1ffd8ecdb792732e3126361caba063324ad09dd55",
+    "created_at": "2020-04-14",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2020-04-14\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO20|DEMO21\", \"pnl\": 3853.1864564030407, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "5056b0023163b5f1a46a35f05db79cb6078f303c6a371aafcce33e86414e8926",
+    "created_at": "2020-05-06",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2020-05-06\", \"direction\": \"LONG_A_SHORT_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"56e51f1ff06236159556\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": -2.010614844077152}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "0cd0efd80fb81b6ade55978ef43bc50e7193e91885a988db1b964a591201727d",
+    "created_at": "2020-05-07",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2020-05-07\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"56e51f1ff06236159556\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "5ea9b3edd9be6546b0d62f6fb7ba4a42e17afffe706d779aa8dbdcec9a82b580",
+    "created_at": "2020-05-20",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2020-05-20\", \"kind\": \"EXIT_DUE\", \"model_id\": \"56e51f1ff06236159556\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"CONVERGENCE\", \"z\": -0.29041174329070446}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "50bf2d5f9e314ba0fdc51bff54dc1333b96b6255df59803bb2e4b984a0de4e3c",
+    "created_at": "2020-05-21",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2020-05-21\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO10|DEMO11\", \"pnl\": 2065.815620995453, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "f5e4db8b6b0caa8cb7dea5244ac435dc332dfddb71d14acab323dd650eb47eba",
+    "created_at": "2020-07-10",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2020-07-10\", \"direction\": \"LONG_A_SHORT_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"33788f08153b600f2968\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": -2.1794028802420944}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "9e6376a2d350cdcc886fe08ff7199737bb32b54bcc2953b3d11e2bc4eeb8e413",
+    "created_at": "2020-07-13",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2020-07-13\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"33788f08153b600f2968\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "844d9ac5f78cb2138f3103d2db3da1fcf765361e74f77a22849a1b254c08603a",
+    "created_at": "2020-07-23",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2020-07-23\", \"kind\": \"EXIT_DUE\", \"model_id\": \"33788f08153b600f2968\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"CONVERGENCE\", \"z\": -0.2508335651180305}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "99ac3226593a2995d2ec866d07308bd93a0bddca84ca35440c31ce70ecb318aa",
+    "created_at": "2020-07-24",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2020-07-24\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO10|DEMO11\", \"pnl\": 2339.6277011077023, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "2220eef1d38d85f75ae7800136918abf4cd95cb0f16ceefe2ef4b049b699fcb9",
+    "created_at": "2020-09-23",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2020-09-23\", \"direction\": \"LONG_A_SHORT_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"0c5347c9b872ab490f3c\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": -2.0906167835454754}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "c4ba998506ae01a0de9ba12bc3c23ce34816af592db401bb0ef1fc92dca7dd61",
+    "created_at": "2020-09-24",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2020-09-24\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"0c5347c9b872ab490f3c\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "73ec007777f28fd818a2e727b14e29ffdf66fd1a54c83c8190ea9349403a7b8c",
+    "created_at": "2020-10-21",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2020-10-21\", \"kind\": \"EXIT_DUE\", \"model_id\": \"0c5347c9b872ab490f3c\", \"pair_id\": \"DEMO10|DEMO11\", \"reason\": \"CONVERGENCE\", \"z\": -0.07546353295817412}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "1fb7f180060a41e94ba24aeacd751533029eb2291addd1a105c1b998c7d2dcb4",
+    "created_at": "2020-10-22",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2020-10-22\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO10|DEMO11\", \"pnl\": 1940.8484121151514, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "f5b09998c2879ab8d6bef5975511f6d447c97602ed2a1adbcb611e24e00634f2",
+    "created_at": "2021-10-13",
+    "kind": "RESEARCH_SETUP",
+    "payload": "{\"date\": \"2021-10-13\", \"direction\": \"LONG_A_SHORT_B\", \"kind\": \"RESEARCH_SETUP\", \"model_id\": \"bf44509e983243cb6197\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"DAILY_CLOSE_CROSSING\", \"z\": -2.1778598844564003}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "2f5e320fb65b1382fb48c8bb56c7610113b6ff3167ddf841e97a982051ac73cf",
+    "created_at": "2021-10-14",
+    "kind": "PAPER_OPEN",
+    "payload": "{\"date\": \"2021-10-14\", \"kind\": \"PAPER_OPEN\", \"model_id\": \"bf44509e983243cb6197\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"IDEALIZED_CASH_SHORT\"}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "87ad3b2665ddf4870a4b00f7ae44736a9fcefe96349505e386cded330b17951a",
+    "created_at": "2021-11-08",
+    "kind": "EXIT_DUE",
+    "payload": "{\"date\": \"2021-11-08\", \"kind\": \"EXIT_DUE\", \"model_id\": \"bf44509e983243cb6197\", \"pair_id\": \"DEMO00|DEMO01\", \"reason\": \"CONVERGENCE\", \"z\": -0.40700466867924096}",
+    "status": "LOCAL_PENDING"
+  },
+  {
+    "event_id": "fdfce483a916ceb44b48bc6d6fa9c00006178553cec631fb67f8d06b8bee4c1e",
+    "created_at": "2021-11-09",
+    "kind": "CLOSED",
+    "payload": "{\"date\": \"2021-11-09\", \"kind\": \"CLOSED\", \"pair_id\": \"DEMO00|DEMO01\", \"pnl\": 2692.2648508716043, \"reason\": \"CONVERGENCE\"}",
+    "status": "LOCAL_PENDING"
+  }
+]
