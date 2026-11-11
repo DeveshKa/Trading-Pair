@@ -4,6 +4,19 @@ Working research implementation of the [production-system plan](planning/nifty-p
 
 This is a tested research foundation, not a production trading release. The current simulator uses cash share holdings with modeled short availability and simplified fees. It does not establish that shorts could have been borrowed, that futures lots fit an account, or that the strategy beats Nifty after all Indian trading expenses.
 
+## Interactive frontend
+
+**Pairwise** provides searchable pair cards, company names, formation-window filters, divergence and distance filters, watchlists, CSV export, interactive price/spread charts, cohort history and data-quality details.
+
+**[Open the private dashboard](https://pairwise-nse-research.rusticagave1.chatgpt.site)** — historical research dated 31 December 2024, with one-year and three-year formation screens.
+
+```bash
+nifty-pairs dashboard-demo --out runs/dashboard-demo
+nifty-pairs serve --run runs/dashboard-demo
+```
+
+Open `http://127.0.0.1:8765/report.html`. The offline demonstration is explicitly synthetic. To display actual research artifacts or import a new snapshot, see the [dashboard guide](docs/dashboard.md). The hosted version is owner-private and uses the dated historical research snapshot, not live quotes. Browser visual QA remains unverified; automated DOM interactions and exporter tests are included in CI.
+
 ## Active direction: original distance method, broader NSE/BSE universe
 
 Read the [all-market distance plan](docs/all-market-distance-plan.md). The new search compares normalized total-return paths without correlation/cointegration/sector screening. It chooses distinct economic securities, excludes duplicate NSE/BSE listings using ISIN, and records missing/untraded/illiquid/identity exclusions. It uses exact blocked SSD search rather than allocating all pair-by-date combinations in memory.

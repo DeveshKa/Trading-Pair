@@ -15,6 +15,7 @@ from .diagnostics import diagnose, save_diagnostics
 from .marketwide import DistanceConfig, discover, distance_study, load_master, save_marketwide
 from .catalog import catalog_from_exports, bulk_library_download
 from .archives import parse_bhavcopy, repair_zero_volumes
+from .dashboard import build_bundle, export_dashboard
 
 
 def main(argv=None):
@@ -90,6 +91,14 @@ def main(argv=None):
     serve = sub.add_parser("serve", help="Serve one generated report locally (read-only)")
     serve.add_argument("--run", required=True)
     serve.add_argument("--port", type=int, default=8765)
+    dash = sub.add_parser("dashboard",help="Export interactive pair explorer from matching research artifacts")
+    dash.add_argument("--data",required=True)
+    dash.add_argument("--security-master",required=True)
+    dash.add_argument("--discoveries",nargs='+',required=True,help="Discovery results.json paths with matching snapshot/date")
+    dash.add_argument("--study",help="Optional forward study results.json")
+    dash.add_argument("--out",required=True)
+    dash_demo = sub.add_parser("dashboard-demo",help="Generate an offline interactive dashboard with clearly synthetic data")
+    dash_demo.add_argument("--out",required=True)
     args = parser.parse_args(argv)
     try:
         if args.command == "demo":
@@ -181,6 +190,32 @@ def main(argv=None):
                               "benchmark_missing_sessions": len(result["benchmark_missing_sessions"]),
                               "classifications": dict(Counter(r["classification"] for r in result["pairs"])),
                               "report": str(Path(args.out) / "report.html")}, indent=2))
+        elif args.command == "dashboard-demo":
+            import tempfile
+            import pandas as pd
+            with tempfile.TemporaryDirectory() as temp:
+                folder=Path(temp)/'demo';make_demo(folder)
+                dataset=Dataset.load(folder)
+                symbols=sorted(dataset.bars.symbol.unique())
+                names=['Demo Aster Bank','Demo Birch Bank','Demo Northstar Digital','Demo Summit Digital','Demo Cedar Health','Demo Willow Health']
+                master=pd.DataFrame({'symbol':symbols,'exchange':'SYNTHETIC','name':names,
+                                     'isin':['SYNTHETIC'+str(i) for i in range(len(symbols))],
+                                     'security_type':'EQUITY'}).set_index('symbol',drop=False)
+                configs=[DistanceConfig(252,126,20,128,0),DistanceConfig(756,126,20,128,0)]
+                discoveries=[discover(dataset,master,c) for c in configs]
+                study=distance_study(dataset,master,configs[0])
+                path=export_dashboard(build_bundle(dataset,master,discoveries,study),args.out)
+            print(json.dumps({'dashboard':str(path/'index.html'),'synthetic':True,
+                              'local_command':f'nifty-pairs serve --run {path}'},indent=2))
+        elif args.command == "dashboard":
+            dataset=Dataset.load(args.data)
+            master=load_master(args.security_master)
+            discoveries=[json.loads(Path(p).read_text()) for p in args.discoveries]
+            study=json.loads(Path(args.study).read_text()) if args.study else None
+            bundle=build_bundle(dataset,master,discoveries,study)
+            path=export_dashboard(bundle,args.out)
+            print(json.dumps({'dashboard':str(path/'index.html'),'pairs':sum(len(h['pairs']) for h in bundle['horizons']),
+                              'as_of':bundle['as_of'],'local_command':f'nifty-pairs serve --run {path}'},indent=2))
         elif args.command == "serve":
             path = Path(args.run).resolve()
             if not (path / "report.html").is_file():
