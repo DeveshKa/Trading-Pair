@@ -1,8 +1,38 @@
 # Nifty pairs research engine
 
-Working v0.1 implementation of the [production-system plan](planning/nifty-pairs-production/README.md). It imports historical data, selects pairs, replays daily decisions with next-session fills, compares equity with a benchmark, and creates research gap cards and a durable **local** alert outbox. Kite Connect is a future adapter; no broker credentials or external notification destinations are needed.
+Working research implementation of the [production-system plan](planning/nifty-pairs-production/README.md). The active direction is now the **original minimum-distance pairs method**, across a broader ordinary-equity universe. Correlation and cointegration are not gates in the new `discover`/`distance-study` path. Earlier diagnostic tools remain available only for reproducibility. Kite Connect is a future adapter; no broker credentials or external notification destinations are needed.
 
 This is a tested research foundation, not a production trading release. The current simulator uses cash share holdings with modeled short availability and simplified fees. It does not establish that shorts could have been borrowed, that futures lots fit an account, or that the strategy beats Nifty after all Indian trading expenses.
+
+## Active direction: original distance method, broader NSE/BSE universe
+
+Read the [all-market distance plan](docs/all-market-distance-plan.md). The new search compares normalized total-return paths without correlation/cointegration/sector screening. It chooses distinct economic securities, excludes duplicate NSE/BSE listings using ISIN, and records missing/untraded/illiquid/identity exclusions. It uses exact blocked SSD search rather than allocating all pair-by-date combinations in memory.
+
+```bash
+# Official local listing exports; BSE is optional until an export is available.
+nifty-pairs catalog --nse-list /path/EQUITY_L.csv --bse-list /path/bse-list.csv \
+  --out data/exchange-catalog.csv
+
+# Bounded resumable library pilot, NOT full historic exchange coverage.
+nifty-pairs bulk-download --catalog data/exchange-catalog.csv \
+  --symbols-file /path/research-symbols.txt --limit 300 \
+  --start 2005-01-01 --end 2026-01-01 --out data/broad
+
+nifty-pairs discover --data data/broad/snapshot \
+  --security-master data/broad/security_master.csv --exploratory --out runs/pairs
+
+nifty-pairs distance-study --data data/broad/snapshot \
+  --security-master data/broad/security_master.csv --exploratory --out runs/convergence
+
+# Separate longer formation experiment, not a new correlation requirement.
+nifty-pairs discover --data data/broad/snapshot \
+  --security-master data/broad/security_master.csv --formation-sessions 756 \
+  --exploratory --out runs/pairs-three-year
+```
+
+`distance-study` ranks on earlier formation paths, then observes six-month forward crossings. Its output is **convergence evidence, not capital-accounted trading returns**. Exact six-cohort GGR capital accounting and real execution remain separate work. The older `backtest` is a risk-controlled distance variant and still requires a complete benchmark; diagnostic-only snapshots cannot bypass that restriction.
+
+The official NSE listing export retrieved on 11 November 2026 contained 2,633 entries. BSE pages/API/archive probes returned HTTP 403 here; BSE ingestion is covered by import fixtures, but no BSE-wide historical result is claimed. Full-exchange historical coverage must include former listings and audited corporate actions; a current catalog alone is not enough. [Verification notes](docs/marketwide-distance-verification.md) record the actual larger pilot and data issues.
 
 ## Quick start: offline demo
 
@@ -47,7 +77,7 @@ The default library benchmark `^NSEI` is the **Nifty price index, not TRI**. Imp
 
 The library adapter reconstructs raw share-unit execution prices from Yahoo split-adjusted OHLC using reported subsequent split events; adjusted close is research-only. This provider convention, dividends, extraordinary distributions, mergers and demergers need exchange cross-checks. The manifest therefore marks actions incomplete. Never regard a successful import as a full corporate-action audit.
 
-## Longer-history pair identification
+## Earlier long-history diagnostics (retained; no longer selection policy)
 
 Read the [detailed development plan](docs/long-history-pair-identification-plan.md). The new diagnostic layer examines **1/3/5/10/20-year horizons**, daily/weekly return correlation, rank correlation, block-bootstrap uncertainty, rolling correlation, market-residual correlation, and rolling cointegration with one conservative joint multiple-testing correction. It does not replace the trading selector or convert high correlation into a trade recommendation.
 

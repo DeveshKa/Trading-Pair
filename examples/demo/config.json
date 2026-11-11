@@ -1,5 +1,5 @@
 {
-  "strategy": "cointegration",
+  "strategy": "distance",
   "formation_sessions": 252,
   "top_pairs": 3,
   "family_alpha": 0.05,
@@ -21,6 +21,6 @@
   "slippage_bps": 10,
   "short_borrow_annual": 0.05,
   "risk_free_annual": 0.0,
-  "same_sector": true,
+  "same_sector": false,
   "require_membership": true
 }

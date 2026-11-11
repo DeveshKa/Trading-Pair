@@ -1,0 +1,28 @@
+{
+  "checked_on": "2026-11-11",
+  "checks": [
+    {
+      "name": "nse_list",
+      "url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+      "status": 200,
+      "bytes": 185986,
+      "content_type": "text/csv",
+      "sha256": "dfb6e27fea0f713ba47c1f57c6eaa307e70e98d1813f538ec8bb513ad572a01a"
+    },
+    {
+      "name": "nse_day",
+      "url": "https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_20261110_F_0000.csv.zip",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "name": "bse_master",
+      "url": "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData_new/w?Group=&Scripcode=&segment=Equity&status=Active&scripName=",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "name": "bse_day",
+      "url": "https://www.bseindia.com/download/BhavCopy/Equity/BhavCopy_BSE_CM_0_0_0_20261110_F_0000.CSV",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

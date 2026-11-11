@@ -12,6 +12,9 @@ from .engine import backtest
 from .report import save_run
 from .scan import scan, save_scan
 from .diagnostics import diagnose, save_diagnostics
+from .marketwide import DistanceConfig, discover, distance_study, load_master, save_marketwide
+from .catalog import catalog_from_exports, bulk_library_download
+from .archives import parse_bhavcopy, repair_zero_volumes
 
 
 def main(argv=None):
@@ -54,6 +57,36 @@ def main(argv=None):
     profile.add_argument("--universe", help="JSON with curated sector mapping")
     profile.add_argument("--cross-sector", action="store_true")
     profile.add_argument("--exploratory", action="store_true")
+    cat = sub.add_parser("catalog",help="Normalize official NSE/BSE listing exports")
+    cat.add_argument("--nse-list")
+    cat.add_argument("--bse-list")
+    cat.add_argument("--out",required=True)
+    bulk = sub.add_parser("bulk-download",help="Bounded resumable library acquisition with failure ledger")
+    bulk.add_argument("--catalog",required=True)
+    bulk.add_argument("--symbols-file")
+    bulk.add_argument("--limit",type=int,default=100)
+    bulk.add_argument("--start",required=True)
+    bulk.add_argument("--end",required=True)
+    bulk.add_argument("--out",required=True)
+    parse = sub.add_parser("parse-bhavcopy",help="Normalize official raw daily archives; does not invent adjusted history")
+    parse.add_argument("--file",required=True)
+    parse.add_argument("--exchange",choices=["NSE","BSE"],required=True)
+    parse.add_argument("--out",required=True)
+    repair = sub.add_parser("repair-volumes",help="Apply auditable official NSE overlays to zero library volume only")
+    repair.add_argument("--data",required=True)
+    repair.add_argument("--bhavcopies",nargs='+',required=True)
+    repair.add_argument("--out",required=True)
+    for command in ("discover","distance-study"):
+        p=sub.add_parser(command,help="Original distance matching, without correlation or cointegration gates")
+        p.add_argument("--data",required=True)
+        p.add_argument("--security-master",required=True)
+        p.add_argument("--out",required=True)
+        p.add_argument("--formation-sessions",type=int,default=252)
+        p.add_argument("--trading-sessions",type=int,default=126)
+        p.add_argument("--top-pairs",type=int,default=20)
+        p.add_argument("--min-turnover",type=float,default=1_000_000)
+        p.add_argument("--as-of")
+        p.add_argument("--exploratory",action="store_true")
     serve = sub.add_parser("serve", help="Serve one generated report locally (read-only)")
     serve.add_argument("--run", required=True)
     serve.add_argument("--port", type=int, default=8765)
@@ -102,6 +135,36 @@ def main(argv=None):
             result = scan(d, c, args.as_of)
             save_scan(result, args.out)
             print(json.dumps({k: v for k, v in result.items() if k != "selection_audit"}, indent=2))
+        elif args.command == "parse-bhavcopy":
+            path=Path(args.out)
+            if path.exists():raise ValueError("Output exists")
+            path.parent.mkdir(parents=True,exist_ok=True)
+            frame=parse_bhavcopy(args.file,args.exchange);frame.to_csv(path,index=False)
+            print(json.dumps({'raw_rows':len(frame),'adjusted':False,'exchange':args.exchange}))
+        elif args.command == "repair-volumes":
+            print(json.dumps(repair_zero_volumes(Dataset.load(args.data),args.bhavcopies,args.out),indent=2))
+        elif args.command == "catalog":
+            out=Path(args.out)
+            if out.exists():raise ValueError("Output exists")
+            out.parent.mkdir(parents=True,exist_ok=True)
+            m=catalog_from_exports(args.nse_list,args.bse_list);m.to_csv(out,index=False)
+            print(json.dumps({"listings":len(m),"distinct_known_isins":m.loc[m["isin"] != "","isin"].nunique(),"current_snapshot_only":True}))
+        elif args.command == "bulk-download":
+            print(json.dumps(bulk_library_download(args.catalog,args.start,args.end,args.out,args.limit,args.symbols_file),indent=2))
+        elif args.command in ("discover","distance-study"):
+            d=Dataset.load(args.data)
+            if not args.exploratory and not d.manifest.get("synthetic") and not d.manifest.get("membership_audited"):
+                raise ValueError("Unaudited universe: explicitly use --exploratory")
+            master=load_master(args.security_master)
+            c=DistanceConfig(args.formation_sessions,args.trading_sessions,args.top_pairs,128,args.min_turnover)
+            if args.command == "discover":
+                result=discover(d,master,c,args.as_of)
+                save_marketwide(result,args.out)
+                print(json.dumps({k:v for k,v in result.items() if k not in ("security_audit","pairs")},indent=2))
+            else:
+                if args.as_of:raise ValueError("distance-study uses the entire snapshot; supply a frozen cutoff snapshot instead")
+                result=distance_study(d,master,c);save_marketwide(result,args.out)
+                print(json.dumps({"cohorts":result["cohorts"],"outcomes":len(result["outcomes"]),"report":args.out},indent=2))
         elif args.command == "diagnose":
             d = Dataset.load(args.data)
             if not args.exploratory and not d.manifest.get("synthetic") and not d.manifest.get("membership_audited"):

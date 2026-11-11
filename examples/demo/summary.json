@@ -1,10 +1,10 @@
 {
   "strategy": {
-    "total_return": 0.031662479407152055,
-    "cagr": 0.009306282874581795,
-    "annual_volatility": 0.005962324018560766,
-    "sharpe": 1.5566357525108059,
-    "max_drawdown": -0.004456195620125891
+    "total_return": 0.057782244234929614,
+    "cagr": 0.016833476530164315,
+    "annual_volatility": 0.010210995745489379,
+    "sharpe": 1.6399932665563905,
+    "max_drawdown": -0.0078435655593867
   },
   "benchmark": {
     "total_return": 0.06906364108756957,
@@ -13,14 +13,14 @@
     "sharpe": 0.2106367162489179,
     "max_drawdown": -0.25016062210456014
   },
-  "return_correlation": 0.011189712397987595,
-  "completed_trades": 15,
-  "wins": 13,
-  "fees": 2266.296788330219,
-  "borrow_cost": 2754.7599909315886,
+  "return_correlation": 0.044201583965691515,
+  "completed_trades": 38,
+  "wins": 29,
+  "fees": 5827.921544277538,
+  "borrow_cost": 6793.242339245981,
   "open_pairs_at_end": 0,
-  "net_profit": 31662.47940715216,
-  "trade_pnl": 31662.479407152165,
+  "net_profit": 57782.24423492956,
+  "trade_pnl": 57782.24423492958,
   "benchmark_kind": "SYNTHETIC_PRICE",
   "data_source": "synthetic_demo",
   "synthetic": true,

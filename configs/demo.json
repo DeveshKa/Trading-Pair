@@ -1,7 +1,7 @@
 {
   "formation_sessions": 252,
-  "strategy": "cointegration",
-  "same_sector": true,
+  "strategy": "distance",
+  "same_sector": false,
   "top_pairs": 3,
   "fee_bps": 5,
   "slippage_bps": 10

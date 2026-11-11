@@ -6,7 +6,7 @@ from pathlib import Path
 
 @dataclass(frozen=True)
 class Config:
-    strategy: str = "cointegration"
+    strategy: str = "distance"
     formation_sessions: int = 252
     top_pairs: int = 5
     family_alpha: float = 0.05
@@ -28,7 +28,7 @@ class Config:
     slippage_bps: float = 10.0
     short_borrow_annual: float = 0.05
     risk_free_annual: float = 0.0
-    same_sector: bool = True
+    same_sector: bool = False
     require_membership: bool = True
 
     def __post_init__(self):

@@ -1,0 +1,10 @@
+{
+  "strategy":"distance",
+  "same_sector":false,
+  "formation_sessions":252,
+  "top_pairs":20,
+  "entry_z":2.0,
+  "exit_z":0.5,
+  "fee_bps":5,
+  "slippage_bps":10
+}

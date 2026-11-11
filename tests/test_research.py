@@ -120,11 +120,11 @@ def test_future_poisoning_cannot_change_past_decisions(demo):
 
 def test_holm_adjustment_and_future_selection(demo):
     date = sorted(demo.bars.date.unique())[300]
-    models, audit = select_pairs(demo, date, Config())
+    models, audit = select_pairs(demo, date, Config(strategy="cointegration",same_sector=True))
     assert audit
     assert all(r["adjusted_pvalue"] >= r["pvalue"] for r in audit)
     modified = replace(demo, bars=demo.bars.loc[demo.bars.date <= date].copy())
-    assert select_pairs(modified, date, Config())[1] == audit
+    assert select_pairs(modified, date, Config(strategy="cointegration",same_sector=True))[1] == audit
     assert all(m.adjusted_pvalue <= .05 for m in models)
 
 
